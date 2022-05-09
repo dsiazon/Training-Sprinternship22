@@ -3,9 +3,9 @@
 ### Installation
 1. Make sure that you have Python 3.9 or above by running the following in the command line: `python --version`
 2. Clone/download the repository to your local machine
-3. Using the command line, go to the main directory: `cd YOURPATH\Training-Sprinternship22\backend`
-4. Create a python virual environment: `python -m venv venv`
-5. Activate the virtual environment: `./venv\Scripts\activate`
+3. Using the command line, go to the main directory: `C:\Users\dssia\Documents\GitHub\Training-Sprinternship22\backend`
+4. Create a python virual environment: `py -m venv`
+5. Activate the virtual environment: `>C:\Users\dssia\Documents\GitHub\Training-Sprinternship22\backend\Scripts\activate.bat`
 6. Install the required depedencies: `pip install -r requirements.txt`
 
 Note: these instructions are on windows 10 machines. It should be similar on other systems as well.
