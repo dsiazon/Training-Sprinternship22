@@ -44,6 +44,7 @@ repeated task to update bitcoin prices periodically
 @repeat_every(seconds = 5)
 
 async def update_bitcoin_price() -> None:
+    print("string")
     price = get_live_bitcoin_price()
     timestamp = convert_date_to_text(datetime.now())
     print(price)
@@ -51,6 +52,7 @@ async def update_bitcoin_price() -> None:
         pass
     else:
         connection.insert_timestamp(BitcoinTimestamp(timestamp, price))
+
     
     
 
@@ -64,7 +66,14 @@ API endpoint to get bitcoin prices
 :rtype:
     json
 """
-
+@app.get("/get_bitcoin_prices")
+async def data():
+    content = connection.get_all_timestampes()
+    print(content)
+    bitcoin_list = []
+    for i in content:
+        bitcoin_list.append(i.__dict__)
+    return json.dump(bitcoin_list)
 
 # main function to run the server
 if __name__ == '__main__':

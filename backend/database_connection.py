@@ -36,13 +36,16 @@ class DatabaseConnection:
             # TODO (5.3.2)  
             # insert sql query
 
-            sql = "SELECT * FROM '{}';".format(TABLE_NAME)
+            sql = "INSERT INTO '{}' VALUES ('{}', '{}');".format(TABLE_NAME, bitcoin.getTimestamp(), bitcoin.getPrice())
+
 
             # execute sql query
 
             cursor.execute(sql)
             # commit to db
-            TABLE_NAME.commit()
+
+            self.__db.commit()
+
             cursor.close()
             # close
 
@@ -71,7 +74,7 @@ class DatabaseConnection:
             
             # insert sql query
              
-        sql = "SELECT * FROM '{}';".format(TABLE_NAME)
+        sql = "INSERT INTO '{}' VALUES ('{}', '{}');".format(TABLE_NAME, bitcoin.getTimestamp(), bitcoin.getPrice())
 
             # execute sql query
            
