@@ -7,9 +7,7 @@ import requests
 # TODO (5.1) 
 def get_live_bitcoin_price():
     # make get request
-    print("string")
     response = requests.get(BITCOIN_CURRENT_PRICE_URL)
-    print("String2")
     print(response)
 
     # check if respons status code is 200

@@ -44,7 +44,6 @@ repeated task to update bitcoin prices periodically
 @repeat_every(seconds = 5)
 
 async def update_bitcoin_price() -> None:
-    print("string")
     price = get_live_bitcoin_price()
     timestamp = convert_date_to_text(datetime.now())
     print(price)
@@ -53,7 +52,6 @@ async def update_bitcoin_price() -> None:
     else:
         connection.insert_timestamp(BitcoinTimestamp(timestamp, price))
 
-    
     
 
 
@@ -78,3 +76,5 @@ async def data():
 # main function to run the server
 if __name__ == '__main__':
     uvicorn.run(app, host="127.0.0.1", port=8000)
+
+
