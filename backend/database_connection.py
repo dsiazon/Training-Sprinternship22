@@ -3,6 +3,7 @@ from constants import TABLE_NAME
 from bitcoin_timestamp import BitcoinTimestamp
 from custom_util import create_database
 
+
 class DatabaseConnection:
 
     def __init__(self):
@@ -56,25 +57,33 @@ class DatabaseConnection:
             list[BitcoinTimestamp]
         """
         try:
-            output = []
-            
-            # TODO (5.3.1)
             # get cursor
+            cursor = self.__db.cursor()
+        except Error as e:
+            print(e)
+            return False
             
+        cursor = db.cursor
             
             # insert sql query
              
+        sql = "SELECT * FROM '{}';".format(TABLE_NAME)
 
             # execute sql query
            
+        cursor.execute(sql)
 
             # fetch all results obtained
             
+        results = cursor.fetchall()
+
             # close
 
+        cursor.close()
             # convert results to BitcoinTimestamp objects and append to output
 
-            return output
-        except Error as e:
-            print(e)
-            return []
+        results.timestamp
+        results.price
+        output = " "
+        output.append(results)
+        return output
