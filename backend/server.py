@@ -18,6 +18,7 @@ async def root():
     return json.dumps(content)
 # TODO (5.4.1): define database connection
 
+connection = DatabaseConnection()
 
 # TODO (3.2): add CORS middleware
 CORS_URL = ["http://localhost", "http://localhost:3000"]
@@ -29,6 +30,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 # TODO (3.1)
+
 """
 a index function to test if server is running
 """
@@ -38,6 +40,19 @@ a index function to test if server is running
 """
 repeated task to update bitcoin prices periodically
 """
+@app.on_event("startup")
+@repeat_every(seconds = 5)
+
+async def update_bitcoin_price() -> None:
+    price = get_live_bitcoin_price()
+    timestamp = convert_date_to_text(datetime.now())
+    print(price)
+    if price == -1:
+        pass
+    else:
+        connection.insert_timestamp(BitcoinTimestamp(timestamp, price))
+    
+    
 
 
 # TODO (5.4.3)

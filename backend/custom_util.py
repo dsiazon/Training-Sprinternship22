@@ -10,17 +10,16 @@ def get_live_bitcoin_price():
     response = requests.get(BITCOIN_CURRENT_PRICE_URL)
     print(reponse)
 
-# check if respons status code is 200
+    # check if respons status code is 200
     if response.status_code == 200:
     # get response body in text
         print(response.text)
-
-    # convert response body to JSON
-    data = response.json()
-    print('Bitcoin Price in USD' + data ['bpi']['USD']['rate'])
+        # convert response body to JSON
+        data = response.json()
+        return(data ['bpi']['USD']['rate'])
     
-# otherwise, print error code
-    if response.status_code != 200:
+    # otherwise, print error code
+    else:
         return(-1)
 
     """
