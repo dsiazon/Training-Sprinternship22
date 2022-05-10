@@ -36,10 +36,14 @@ class DatabaseConnection:
             # TODO (5.3.2)  
             # insert sql query
 
+            sql = "SELECT * FROM '{}';".format(TABLE_NAME)
+
             # execute sql query
 
+            cursor.execute(sql)
             # commit to db
-
+            TABLE_NAME.commit()
+            cursor.close()
             # close
 
             return True
@@ -81,9 +85,13 @@ class DatabaseConnection:
 
         cursor.close()
             # convert results to BitcoinTimestamp objects and append to output
+        for x in results:
+            x = BitcoinTimestamp()
+            output.append(x.getTimestamp())
+            output.append(x.getPrice())
 
-        results.timestamp
-        results.price
-        output = " "
-        output.append(results)
-        return output
+            return output
+
+        """except Error as e:
+        print(e)
+        return [] """
