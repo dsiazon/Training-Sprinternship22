@@ -28,13 +28,7 @@ class DatabaseConnection:
         try:
             # get cursor
             cursor = self.__db.cursor()
-        except Error as e:
-            print(e)
-            return False
 
-        try:
-            # TODO (5.3.2)  
-            # insert sql query
 
             sql = "INSERT INTO '{}' (timestamp, price) VALUES ('{}', '{}');".format(TABLE_NAME, bitcoin.getTimestamp(), bitcoin.getPrice())
 
@@ -54,7 +48,7 @@ class DatabaseConnection:
             print(e)
             return False
       
-    def get_all_timestampes(self):
+    def get_all_timestamps(self):
         """
         gets all bitcoin timestamps in the database
 
@@ -64,35 +58,30 @@ class DatabaseConnection:
             list[BitcoinTimestamp]
         """
         try:
+            output = []
             # get cursor
             cursor = self.__db.cursor()
-        except Error as e:
-            print(e)
-            return False
-            
-        cursor = db.cursor
-            
             # insert sql query
              
-        sql = "SELECT * FROM '{}';".format(TABLE_NAME)
+            sql = "SELECT * FROM '{}';".format(TABLE_NAME)
 
             # execute sql query
            
-        cursor.execute(sql)
+            cursor.execute(sql)
 
             # fetch all results obtained
             
-        results = cursor.fetchall()
+            results = cursor.fetchall()
 
             # close
 
-        cursor.close()
+            cursor.close()
             # convert results to BitcoinTimestamp objects and append to output
-        for i, j in results: 
+            for i, j in results: 
                 x = BitcoinTimestamp(i,j)
                 output.append(x)
-                return output
+            return output
 
-        """except Error as e:
-        print(e)
-        return [] """
+        except Error as e:
+            print(e)
+            return False

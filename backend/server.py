@@ -21,13 +21,12 @@ async def root():
 connection = DatabaseConnection()
 
 # TODO (3.2): add CORS middleware
-CORS_URL = ["http://localhost", "http://localhost:3000"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins = CORS_URLS,
     allow_credentials = True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=[""],
+    allow_headers=[""],
 )
 # TODO (3.1)
 
@@ -35,24 +34,6 @@ app.add_middleware(
 a index function to test if server is running
 """
 
-
-# TODO (5.4.2)
-"""
-repeated task to update bitcoin prices periodically
-"""
-@app.on_event("startup")
-@repeat_every(seconds = 5)
-
-async def update_bitcoin_price() -> None:
-    price = get_live_bitcoin_price()
-    timestamp = convert_date_to_text(datetime.now())
-    print(price)
-    if price == -1:
-        pass
-    else:
-        connection.insert_timestamp(BitcoinTimestamp(timestamp, price))
-
-    
 
 
 # TODO (5.4.3)
@@ -65,16 +46,33 @@ API endpoint to get bitcoin prices
     json
 """
 @app.get("/get_bitcoin_prices")
-async def data():
-    content = connection.get_all_timestampes()
-    print(content)
+async def get_bitcoin_prices():
+    content = connection.get_all_timestamps()
     bitcoin_list = []
     for i in content:
-        bitcoin_list.append(i.__dict__)
-    return json.dump(bitcoin_list)
+        dictData = i.dict
+        bitcoin_list.append(dictData)
+    return json.dumps(bitcoin_list)
+
+    # TODO (5.4.2)
+"""
+repeated task to update bitcoin prices periodically
+"""
+@app.on_event("startup")
+@repeat_every(seconds = 60*2)
+
+async def update_data() -> None:
+    price = get_live_bitcoin_price()
+    print(price)
+    timestamp = convert_date_to_text(datetime.now())
+    if price == -1:
+        pass
+    else:
+        connection.insert_timestamp(BitcoinTimestamp(timestamp, price))
+
 
 # main function to run the server
-if __name__ == '__main__':
+if __name__ == 'main':
     uvicorn.run(app, host="127.0.0.1", port=8000)
 
 

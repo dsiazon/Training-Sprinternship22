@@ -24,6 +24,9 @@ function TimeCurrencyCard ({currency,showData}) {
         CSS  Object
     */
     const priceColor = (index) => {
+        if ((index + 1) == showData.length){
+            return styles.priceContainerEqual 
+        }
         if(showData[index].price > showData[index+1].price){
             return styles.priceContainerUp
         }
@@ -48,6 +51,9 @@ function TimeCurrencyCard ({currency,showData}) {
         string
     */
     const arrowSign = (index) => {
+        if ((index + 1) == showData.length){
+            return '-' 
+        }
         if(showData[index].price > showData[index+1].price){
             return "↑"
         }
