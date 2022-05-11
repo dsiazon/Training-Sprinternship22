@@ -1,6 +1,5 @@
 import styles from "./TimeCurrencyCard.module.css"
 
-
 /* 
 :currency:
     the current chose currency
@@ -25,6 +24,15 @@ function TimeCurrencyCard ({currency,showData}) {
         CSS  Object
     */
     const priceColor = (index) => {
+        if(showData[index].price > showData[index+1].price){
+            return styles.priceContainerUp
+        }
+        else if(showData[index].price < showData[index+1].price){
+            return styles.priceContainerDown
+        }
+        else{
+            return styles.priceContainerEqual
+        }
     }
 
     // ToDo 10.2.2
@@ -40,17 +48,29 @@ function TimeCurrencyCard ({currency,showData}) {
         string
     */
     const arrowSign = (index) => {
+        if(showData[index].price > showData[index+1].price){
+            return "↑"
+        }
+        else if(showData[index].price < showData[index+1].price){
+            return "↓"
+        }
+        else{
+            return '-'
+        }
+
     }
+
     
     // ToDo 10.2.3
     return (
         <>
         {/* reference for .map https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map */}
             {showData.map((d, index) => (
-                <>
-                {/* use {currency === 'USD' ? "$" : *other currency sign*} to set the currency notation  
-                reference https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator */}
-                </>
+               <div className={priceColor(index)}>
+                    (d.timestamp,d.price)
+                    {currency === 'USD' ? "$" : 'EUR'}
+
+                </div>
             ))} 
         </>      
     );

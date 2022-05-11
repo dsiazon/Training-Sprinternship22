@@ -2,12 +2,21 @@
 }
 
 .priceContainerUp {
+    width: 400px;
+    height: 300px;
+    color: rgb(29, 222, 93);
 }
 
 .priceContainerDown {
+    width: 400px;
+    height: 300px;
+    color: rgb(222, 42, 29);
 }
 
 .priceContainerEqual {
+    width: 400px;
+    height: 300px;
+    color: rgb(255, 255, 255);
 }
 
 .timeContainer {
