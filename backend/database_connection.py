@@ -88,12 +88,10 @@ class DatabaseConnection:
 
         cursor.close()
             # convert results to BitcoinTimestamp objects and append to output
-        for x in results:
-            x = BitcoinTimestamp()
-            output.append(x.getTimestamp())
-            output.append(x.getPrice())
-
-            return output
+        for i, j in results: 
+                x = BitcoinTimestamp(i,j)
+                output.append(x)
+                return output
 
         """except Error as e:
         print(e)

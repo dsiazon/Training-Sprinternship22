@@ -17,7 +17,7 @@ function CurrencyButton ({currency,changeCurrency}) {
     <div className={styles.bodyContainer}>
         {
           <button onClick={()=>changeCurrency("USD")}
-            className={chosen === 'USD' ? styles.currencyButtonActive : styles.currencyButtonDefault}>
+            className={currency === 'USD' ? styles.currencyButtonActive : styles.currencyButtonDefault}>
 
             USD
          </button>  
@@ -25,7 +25,7 @@ function CurrencyButton ({currency,changeCurrency}) {
           
         {
           <button onClick={()=>changeCurrency("EUR")}
-            className={chosen === 'EUR' ? styles.currencyButtonActive : styles.currencyButtonDefault}>
+            className={currency === 'EUR' ? styles.currencyButtonActive : styles.currencyButtonDefault}>
 
               EUR
            </button> 

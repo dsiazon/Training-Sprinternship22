@@ -7,6 +7,9 @@ import styles from "./Home.module.css"
 function Home () {
   // ToDo 10.3.1
   /* set variables (data, shown data, currency) using hooks (useState) */
+  const [data, setData] = useState([])
+  const [showData, setshowData] = useState([])
+  const [currency, setCurrency] = useState("USD")
   
 
   // ToDo 10.3.2
@@ -15,7 +18,22 @@ function Home () {
   use JSON.parse to parse response data 
   Hint: with axios use .get(url of backend) .then(response =>{ do something with response}) refrence https://axios-http.com/docs/example
   */
+  const axios = require('axios').default;
   const updateData = () => {
+    axios.get('http://127.0.0.1:8000/get_bitcoin_prices')
+    .then(function (response) {
+      // handle success
+      console.log(response);
+      setData(JSON.parse(response.data))
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .then(function () {
+      // always executed
+    });
+
   }
   
   // update data on initialization (useEffect [], no dependencies)
@@ -29,7 +47,10 @@ function Home () {
     setTimeout refrence https://developer.mozilla.org/en-US/docs/Web/API/setTimeout
   */
 
-
+    useEffect(() =>{
+      setTimeout(updateData(), 3000)
+    },[data])
+    
   // ToDo 10.3.3
   /*
   set data to be shown ( sorting date descending and changing price if other currency is chosen) 
@@ -45,7 +66,17 @@ function Home () {
   currShowData.sort((a,b)=> {return(new Date(b.timestamp) - new Date(a.timestamp))})
   reference https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
   */
+
+  useEffect(() =>{
+    let currShowData = data
+    if(currency == 'EUR'){
+      currShowData = currShowData.map(el => ({...el, price:parseFloat((el.price*.95).toFixed(4))}))
+    }
+    currShowData.sort((a,b)=> {return(new Date(b.timestamp) - new Date(a.timestamp))})
+    setshowData(currShowData)
+  },[data, currency])
   
+
   // ToDo 10.3.4
   /* 
   handle currency state button onclick
@@ -56,15 +87,17 @@ function Home () {
     string
   */
   const changeCurrency = (currency) =>{
+    setCurrency(currency);
   }
+
 
   // ToDo 10.3.5
   // call CurrencyButton and TimeCurrencyCard pass the variables
-  return (
-      <>
-      </>
-  );
-
+return (
+  <div>
+         <CurrencyButton currency = {currency} changeCurrency={changeCurrency}/>
+         <TimeCurrencyCard currency = {currency} showData={showData}/>
+  </div>
+);
 }
-
 export default Home;
