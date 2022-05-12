@@ -28,7 +28,9 @@ function CurrencyButton ({currency,changeCurrency}) {
             className={currency === 'EUR' ? styles.currencyButtonDefault : styles.currencyButtonDefault}>
               EUR
            </button> 
+           
         }
+        
     </div>
     </div>
     

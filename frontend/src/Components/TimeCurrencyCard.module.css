@@ -40,6 +40,28 @@
     color: rgb(255, 255, 255);
 }
 
-.timeContainer {
-    
+.diffButton {
+    font-size: 25px;
+    -webkit-text-stroke: .50px black;
+    font-family: Impact;
+    margin: 0;
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    width: 25%;
+    color: white;
+    background-color:  rgb(34, 44, 50);
+}
+
+.diffButton2 {
+    font-size: 25px;
+    margin: 0;
+    -webkit-text-stroke: .50px black;
+    font-family: Impact;
+    position: absolute;
+    top: 80px;
+    left: 25%;
+    width: 25%;
+    color: white;
+    background-color:  rgb(34, 44, 50);
 }

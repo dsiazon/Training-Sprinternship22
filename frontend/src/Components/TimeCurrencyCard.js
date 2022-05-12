@@ -10,7 +10,7 @@ import styles from "./TimeCurrencyCard.module.css"
 :type:
     list[{dict}]
 */
-function TimeCurrencyCard ({currency,showData}) {
+function TimeCurrencyCard ({currency,showData, priceDiff, showPriceDiff}) {
     // ToDo 10.2.1
     /* 
     set price text color
@@ -66,7 +66,7 @@ function TimeCurrencyCard ({currency,showData}) {
 
     }
 
-    const priceDiff = (index) => {
+    const priceDiffData = (index) => {
 
         if (index + 1 == showData.length){
             return '-' 
@@ -76,7 +76,6 @@ function TimeCurrencyCard ({currency,showData}) {
         }
     }
 
-
     
     // ToDo 10.2.3
     return (
@@ -84,10 +83,15 @@ function TimeCurrencyCard ({currency,showData}) {
             {showData.map((d, index) => (
                <div className={priceColor(index)}>
                 <div className={styles.cardContainer}>
-                
+                 
                     {d.timestamp} {currency === 'USD' ? "$" : '€'}{d.price}
-                    {arrowSign(index)} #{priceDiff(index)}
-                
+                    {arrowSign(index)} {/*{priceDiff(index)}*/} 
+                    {
+                    <button onClick={()=>showPriceDiff("Difference")} >
+                        {priceDiffData(index)}
+                    </button>  
+                    }  
+                                   
                 </div>
                 </div>
             ))} 

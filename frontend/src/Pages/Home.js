@@ -12,7 +12,7 @@ function Home () {
   const [data, setData] = useState([])
   const [showData, setShowData] = useState([])
   const [currency, setCurrency] = useState("USD")
-  const [showDiff, setShowDiff] = useState([])
+  const [priceDiff, setPriceDiff] = useState("Diff")
  
   
 
@@ -71,7 +71,7 @@ function Home () {
     currShowData.sort((a,b)=> {return(new Date(b.timestamp) - new Date(a.timestamp))})
     setShowData(currShowData)
   },[currency, data])
-  
+
 
   // ToDo 10.3.4
   /* 
@@ -86,6 +86,9 @@ function Home () {
     setCurrency(currency);
   }
 
+  const showPriceDiff = (priceDiff) =>{
+    setPriceDiff(priceDiff);
+  }
 
   // ToDo 10.3.5
   // call CurrencyButton and TimeCurrencyCard pass the variables
@@ -95,10 +98,13 @@ return (
       <h1 div className= {styles.title}><center>BITCOIN PRICES</center></h1>
       <div>
          <CurrencyButton currency = {currency} changeCurrency={changeCurrency}/>
-         <TimeCurrencyCard currency = {currency} showData={showData}/>
+         <TimeCurrencyCard currency = {currency} showData={showData} showPriceDiff={showPriceDiff}/>
       </div>
     </div>
     </div>
+
+    // Set the button text to 'Can you click me?'
+    
 );
 }
 export default Home;
