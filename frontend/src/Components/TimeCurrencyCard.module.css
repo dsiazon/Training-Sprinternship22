@@ -1,23 +1,45 @@
 .cardContainer {
-    background-color: rgb(0, 0, 0);
+    margin: 0;
+    position: relative;
+    background-color: rgb(34, 44, 50);
 }
 
 .priceContainerUp {
+    font-family: Impact;
+    text-align: center;
+    word-spacing: 10px;
+    margin: 0;
+    position: relative;
+    top: 100px;
+    left: 0px;
     font-size: 20px;
-    color: rgb(29, 222, 93);
+    color: rgb(27, 151, 69);
 }
 
 .priceContainerDown {
+    font-family: Impact;
+    text-align: center;
+    word-spacing: 10px;
+    margin: 0;
+    position: relative;
+    top: 100px;
+    left: 0px;
     font-size: 20px;
-    color: rgb(222, 42, 29);
+    color: rgb(159, 37, 29);
 }
 
 .priceContainerEqual {
+    font-family: Impact;
+    text-align: center;
+    word-spacing: 10px;
+    margin: 0;
+    position: relative;
+    top: 100px;
+    left: 0px;
     font-size: 20px;
     color: rgb(255, 255, 255);
 }
 
 .timeContainer {
-    font-size: 20px;
-    color:rgb(143, 124, 226)
+    
 }

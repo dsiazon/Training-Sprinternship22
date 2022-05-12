@@ -44,7 +44,7 @@ a index function to test if server is running
 repeated task to update bitcoin prices periodically
 """
 @app.on_event("startup")
-@repeat_every(seconds = 5)
+@repeat_every(seconds = 15)
 async def update_data() -> None:
     price = get_live_bitcoin_price()
     print(price)

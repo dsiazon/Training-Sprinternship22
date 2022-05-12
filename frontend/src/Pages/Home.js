@@ -6,11 +6,11 @@ import styles from "./Home.module.css"
 
 function Home () {
 
-  const axios = require('axios');
+  const axios = require('axios').default;
   // ToDo 10.3.1
   /* set variables (data, shown data, currency) using hooks (useState) */
   const [data, setData] = useState([])
-  const [showData, setshowData] = useState([])
+  const [showData, setShowData] = useState([])
   const [currency, setCurrency] = useState("USD")
   
 
@@ -42,7 +42,7 @@ function Home () {
   */
 
     useEffect(() =>{
-      setTimeout(updateData(), 2000)
+      setTimeout(updateData(), 120000)
     },[data])
     
   // ToDo 10.3.3
@@ -63,11 +63,11 @@ function Home () {
 
   useEffect(() =>{
     let currShowData = data
-    if(currency == 'EUR'){
+    if(currency == "EUR"){
       currShowData = currShowData.map(el => ({...el, price:parseFloat((el.price*.95).toFixed(4))}))
     }
     currShowData.sort((a,b)=> {return(new Date(b.timestamp) - new Date(a.timestamp))})
-    setshowData(currShowData)
+    setShowData(currShowData)
   },[currency, data])
   
 

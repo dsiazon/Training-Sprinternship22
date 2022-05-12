@@ -24,7 +24,7 @@ function TimeCurrencyCard ({currency,showData}) {
         CSS  Object
     */
     const priceColor = (index) => {
-        if ((index + 1) == showData.length){
+        if (index + 1 == showData.length){
             return styles.priceContainerEqual 
         }
         if(showData[index].price > showData[index+1].price){
@@ -51,7 +51,7 @@ function TimeCurrencyCard ({currency,showData}) {
         string
     */
     const arrowSign = (index) => {
-        if ((index + 1) == showData.length){
+        if (index + 1 == showData.length){
             return '-' 
         }
         if(showData[index].price > showData[index+1].price){
@@ -65,7 +65,6 @@ function TimeCurrencyCard ({currency,showData}) {
         }
 
     }
-
     
     // ToDo 10.2.3
     return (
@@ -73,8 +72,8 @@ function TimeCurrencyCard ({currency,showData}) {
             {showData.map((d, index) => (
                <div className={priceColor(index)}>
                 <div className={styles.cardContainer}>
-                    {d.timestamp} {d.price}
-                    {currency === 'USD' ? "$" : '€'}
+                    
+                    {d.timestamp} {currency === 'USD' ? "$" : '€'}{d.price}
                     {arrowSign(index)}
                     
                 </div>
