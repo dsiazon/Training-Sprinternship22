@@ -65,6 +65,18 @@ function TimeCurrencyCard ({currency,showData}) {
         }
 
     }
+
+    const priceDiff = (index) => {
+
+        if (index + 1 == showData.length){
+            return '-' 
+        }
+        else{
+            return showData[index].price - showData[index+1].price 
+        }
+    }
+
+
     
     // ToDo 10.2.3
     return (
@@ -72,10 +84,10 @@ function TimeCurrencyCard ({currency,showData}) {
             {showData.map((d, index) => (
                <div className={priceColor(index)}>
                 <div className={styles.cardContainer}>
-                    
+                
                     {d.timestamp} {currency === 'USD' ? "$" : '€'}{d.price}
-                    {arrowSign(index)}
-                    
+                    {arrowSign(index)} #{priceDiff(index)}
+                
                 </div>
                 </div>
             ))} 

@@ -12,6 +12,8 @@ function Home () {
   const [data, setData] = useState([])
   const [showData, setShowData] = useState([])
   const [currency, setCurrency] = useState("USD")
+  const [showDiff, setShowDiff] = useState([])
+ 
   
 
   // ToDo 10.3.2
@@ -88,8 +90,7 @@ function Home () {
   // ToDo 10.3.5
   // call CurrencyButton and TimeCurrencyCard pass the variables
 return (
-  <div className= {styles.cardContainer}>
-    <div className={styles.timeContainer}>
+    <div className={styles.bodyContainerMargin}>
     <div className={styles.bodyContainer}>
       <h1 div className= {styles.title}><center>BITCOIN PRICES</center></h1>
       <div>
@@ -98,7 +99,6 @@ return (
       </div>
     </div>
     </div>
-  </div>
 );
 }
 export default Home;
