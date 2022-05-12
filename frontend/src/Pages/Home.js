@@ -5,6 +5,8 @@ import TimeCurrencyCard from "../Components/TimeCurrencyCard";
 import styles from "./Home.module.css"
 
 function Home () {
+
+  const axios = require('axios');
   // ToDo 10.3.1
   /* set variables (data, shown data, currency) using hooks (useState) */
   const [data, setData] = useState([])
@@ -18,7 +20,7 @@ function Home () {
   use JSON.parse to parse response data 
   Hint: with axios use .get(url of backend) .then(response =>{ do something with response}) refrence https://axios-http.com/docs/example
   */
-  const axios = require('axios').default;
+  
   const updateData = () => {
     axios.get('http://127.0.0.1:8000/get_bitcoin_prices')
     .then(function (response) {
@@ -26,14 +28,6 @@ function Home () {
       console.log(response);
       setData(JSON.parse(response.data))
     })
-    .catch(function (error) {
-      // handle error
-      console.log(error);
-    })
-    .then(function () {
-      // always executed
-    });
-
   }
   
   // update data on initialization (useEffect [], no dependencies)
@@ -48,7 +42,7 @@ function Home () {
   */
 
     useEffect(() =>{
-      setTimeout(updateData(), 3000)
+      setTimeout(updateData(), 2000)
     },[data])
     
   // ToDo 10.3.3
@@ -74,7 +68,7 @@ function Home () {
     }
     currShowData.sort((a,b)=> {return(new Date(b.timestamp) - new Date(a.timestamp))})
     setshowData(currShowData)
-  },[data, currency])
+  },[currency, data])
   
 
   // ToDo 10.3.4
@@ -94,9 +88,13 @@ function Home () {
   // ToDo 10.3.5
   // call CurrencyButton and TimeCurrencyCard pass the variables
 return (
-  <div>
+  <div className= {styles.cardContainer}>
+    <div className={styles.timeContainer}>
+      <div>
          <CurrencyButton currency = {currency} changeCurrency={changeCurrency}/>
          <TimeCurrencyCard currency = {currency} showData={showData}/>
+      </div>
+    </div>
   </div>
 );
 }

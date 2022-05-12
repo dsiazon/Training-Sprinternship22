@@ -8,7 +8,7 @@ import requests
 def get_live_bitcoin_price():
     # make get request
     response = requests.get(BITCOIN_CURRENT_PRICE_URL)
-    print(response)
+ 
 
     # check if respons status code is 200
     if response.status_code == 200:
@@ -21,7 +21,7 @@ def get_live_bitcoin_price():
     
     # otherwise, print error code
     else:
-        return(-1)
+        return -1
 
     """
     gets live price of bitcoin from bitcoin open API
@@ -94,4 +94,4 @@ def convert_date_to_text(date: datetime):
     return date.strftime("%Y-%m-%d %H:%M:%S")
 
 if __name__ == '__main__':
-    get_live_bitcoin_price()
+    create_database()

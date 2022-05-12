@@ -70,12 +70,14 @@ function TimeCurrencyCard ({currency,showData}) {
     // ToDo 10.2.3
     return (
         <>
-        {/* reference for .map https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map */}
             {showData.map((d, index) => (
                <div className={priceColor(index)}>
-                    (d.timestamp,d.price)
-                    {currency === 'USD' ? "$" : 'EUR'}
-
+                <div className={styles.cardContainer}>
+                    {d.timestamp} {d.price}
+                    {currency === 'USD' ? "$" : '€'}
+                    {arrowSign(index)}
+                    
+                </div>
                 </div>
             ))} 
         </>      

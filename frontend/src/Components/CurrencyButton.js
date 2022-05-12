@@ -14,7 +14,7 @@ function CurrencyButton ({currency,changeCurrency}) {
   // ToDo 10.1
   return (
     <>
-    <div className={styles.bodyContainer}>
+    <div>
         {
           <button onClick={()=>changeCurrency("USD")}
             className={currency === 'USD' ? styles.currencyButtonActive : styles.currencyButtonDefault}>
