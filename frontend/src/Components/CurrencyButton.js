@@ -14,20 +14,22 @@ function CurrencyButton ({currency,changeCurrency}) {
   // ToDo 10.1
   return (
     <div>
+      <div>
       <h1 div className= {styles.headers}> Date   Time   Price</h1>
         {
     
           <button onClick={()=>changeCurrency("USD")}
-            className={currency === 'USD' ? styles.currencyButtonActive : styles.currencyButtonDefault}>
+            className={currency === 'USD' ? styles.currencyButtonActive : styles.currencyButtonActive}>
             USD
          </button>  
         }   
         {
           <button onClick={()=>changeCurrency("EUR")}
-            className={currency === 'EUR' ? styles.currencyButtonActive : styles.currencyButtonDefault}>
+            className={currency === 'EUR' ? styles.currencyButtonDefault : styles.currencyButtonDefault}>
               EUR
            </button> 
         }
+    </div>
     </div>
     
   );

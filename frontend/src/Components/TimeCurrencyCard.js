@@ -68,7 +68,7 @@ function TimeCurrencyCard ({currency,showData}) {
     
     // ToDo 10.2.3
     return (
-        <>
+        <> 
             {showData.map((d, index) => (
                <div className={priceColor(index)}>
                 <div className={styles.cardContainer}>

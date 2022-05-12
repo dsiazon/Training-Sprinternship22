@@ -42,7 +42,7 @@ function Home () {
   */
 
     useEffect(() =>{
-      setTimeout(updateData(), 120000)
+      setTimeout(updateData(), 300000)
     },[data])
     
   // ToDo 10.3.3
@@ -90,10 +90,13 @@ function Home () {
 return (
   <div className= {styles.cardContainer}>
     <div className={styles.timeContainer}>
+    <div className={styles.bodyContainer}>
+      <h1 div className= {styles.title}><center>BITCOIN PRICES</center></h1>
       <div>
          <CurrencyButton currency = {currency} changeCurrency={changeCurrency}/>
          <TimeCurrencyCard currency = {currency} showData={showData}/>
       </div>
+    </div>
     </div>
   </div>
 );
